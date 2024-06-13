@@ -1,0 +1,23 @@
+mat-grid-tile {
+  background: lightblue;
+  flex-direction: column;
+  //height:200px;
+  //margin: 10px;
+}
+
+.mat-grid-tile-content
+{
+    flex-direction: column;
+}
+
+.tileImages{
+  height:50%;
+  width: 30%;
+
+}
+
+.detailImages{
+
+  height:50%;
+  width:50%;
+}
