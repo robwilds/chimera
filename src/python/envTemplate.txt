@@ -1,0 +1,7 @@
+** use the values below in a .env file
+
+BASE_URL="http://rwilds232.alfdemo.com"
+auth=""
+user=""
+pass=""
+basepath = "../src/assets/"
