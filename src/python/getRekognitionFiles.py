@@ -65,29 +65,25 @@ def getrekogfilesinfo(nodeid):
 
 def main():
 
-  imageID = [] #clear array now!
-
+  rekogSrc = [] #clear array now!
+  rekogLabels = []
+  rekogName = []
   #clean the download folder now!
   cleanFolder(path)
 
-  #print('search result --> ' + json.dumps(pullListofrekogfiles()))
-  #now loop and get all images to download
+  #print('search result --> ' + json.dumps(pullListofrekogfiles())) #debug
+  #now loop and get all images to download and populate data frame columns
   for entry in pullListofrekogfiles()['list']['entries']:
     #print('node-> ' + entry['entry']['id'] + ' labels-> ' + str(getrekogfilesinfo(entry['entry']['id'])['entry']['properties']['schema:label'])) #debugging
     rekogSrc.append(downloadImages(entry['entry']['id'],path))
     rekogName.append(entry['entry']['name'])
     rekogLabels.append(getrekogfilesinfo(entry['entry']['id'])['entry']['properties']['schema:label'])
-    """ rekogFilesArray.append("["+
-      downloadImages(entry['entry']['id'],path)+","+
-      entry['entry']['name']+","+
-      str(getrekogfilesinfo(entry['entry']['id'])['entry']['properties']['schema:label'])+"]"
-      ) """
 
   rekogDF = pd.DataFrame([rekogSrc,rekogName,rekogLabels]).T
   rekogDF.rename(columns=cols,inplace=True)
 
   print (rekogDF)
-  rekogDF.to_excel('rekogfiles.xlsx')
+  #rekogDF.to_excel('rekogfiles.xlsx')
 
   return rekogDF
 

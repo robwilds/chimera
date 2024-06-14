@@ -1,12 +1,12 @@
 
 module.exports = {
   "/alfresco": {
-    "target": "http://rwshore.alfdemo.com",
+    "target": "http://clive-aws-booth.sales-demohyland.com",
     "secure": false,
     "changeOrigin": true
   },
   "/activiti-app": {
-    "target": "http://rwshore.alfdemo.com",
+    "target": "http://clive-aws-booth.sales-demohyland.com",
     "secure": false,
     "changeOrigin": true
   }

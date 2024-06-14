@@ -1,8 +1,15 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialog} from '@angular/material/dialog';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+export interface rekogData {
+  src: string;
+  name: string;
+  labels: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -10,14 +17,25 @@ import { MatGridListModule } from '@angular/material/grid-list';
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
+  ngOnInit(): void {
+      this.queryWebService();
+  }
+
+  constructor(private http: HttpClient){}
   readonly dialog = inject(MatDialog);
 
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
+  longText = ``;
+  webserviceURL = 'http://127.0.0.1:5202/getrekognitionfiles'
 
+  queryWebService(){
+
+    this.http.get<rekogData>(this.webserviceURL).subscribe(data =>
+      {
+        console.log(data);
+      })
+  }
   openDialog() {
     const dialogRef = this.dialog.open(DialogContentExampleDialog,{
       height:'90%',
@@ -28,7 +46,6 @@ export class HomeComponent {
       console.log(`Dialog result: ${result}`);
     });
   }
-
 }
 
 @Component({
