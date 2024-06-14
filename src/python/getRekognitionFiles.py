@@ -18,8 +18,10 @@ devpath = os.getenv("devpath")
 prodpath = os.getenv("prodpath")
 path = prodpath # set the working path here once!
 
-rekogFilesArray = []
-cols = {0: 'src'}
+rekogSrc= []
+rekogName= []
+rekogLabels = []
+cols = {0: 'src',1:'name',2:'labels'}
 
 def downloadImages(nodeid,path):
 
@@ -34,7 +36,7 @@ def downloadImages(nodeid,path):
   with open(path+'rekogimages/' + nodeid+".jpg",'wb') as f:
     f.write(temp4.content)
 
-  return nodeid+'rekogimages/'".jpg"
+  return nodeid+".jpg"
 
 def cleanFolder(path):
   for i in os.listdir(path+'rekogimages/'):
@@ -72,15 +74,16 @@ def main():
   #now loop and get all images to download
   for entry in pullListofrekogfiles()['list']['entries']:
     #print('node-> ' + entry['entry']['id'] + ' labels-> ' + str(getrekogfilesinfo(entry['entry']['id'])['entry']['properties']['schema:label'])) #debugging
-    #imageID.append(entry['entry']['id'])
-    #imageID.append(downloadImages(entry['entry']['id'],path)) #use devpath for local devel
-    rekogFilesArray.append("["+
+    rekogSrc.append(downloadImages(entry['entry']['id'],path))
+    rekogName.append(entry['entry']['name'])
+    rekogLabels.append(getrekogfilesinfo(entry['entry']['id'])['entry']['properties']['schema:label'])
+    """ rekogFilesArray.append("["+
       downloadImages(entry['entry']['id'],path)+","+
       entry['entry']['name']+","+
       str(getrekogfilesinfo(entry['entry']['id'])['entry']['properties']['schema:label'])+"]"
-      )
+      ) """
 
-  rekogDF = pd.DataFrame([rekogFilesArray]).T
+  rekogDF = pd.DataFrame([rekogSrc,rekogName,rekogLabels]).T
   rekogDF.rename(columns=cols,inplace=True)
 
   print (rekogDF)
