@@ -1,5 +1,5 @@
 import pandas as pd
-import python.getRekognitionFiles as getRekognitionFiles
+import getRekognitionFiles as getRekognitionFiles
 
 from flask import Flask,json,Response,request
 from flask_cors import CORS, cross_origin

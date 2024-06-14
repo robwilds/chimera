@@ -31,15 +31,15 @@ def downloadImages(nodeid,path):
   #put process here to determine extension based on mimetype
   #could use this: https://note.nkmk.me/en/python-mimetypes-usage/
 
-  with open(path + nodeid+".jpg",'wb') as f:
+  with open(path+'rekogimages/' + nodeid+".jpg",'wb') as f:
     f.write(temp4.content)
 
-  return nodeid+".jpg"
+  return nodeid+'rekogimages/'".jpg"
 
 def cleanFolder(path):
-  for i in os.listdir(path):
+  for i in os.listdir(path+'rekogimages/'):
     print("removing file: "+i)
-    os.remove(path+i)
+    os.remove(path+'rekogimages/'+i)
 
 def pullListofrekogfiles():
   imageQuery = BASE_URL + '/alfresco/api/-default-/public/search/versions/1/search'
@@ -66,27 +66,27 @@ def main():
   imageID = [] #clear array now!
 
   #clean the download folder now!
-  #cleanFolder(path)
+  cleanFolder(path)
 
   #print('search result --> ' + json.dumps(pullListofrekogfiles()))
   #now loop and get all images to download
   for entry in pullListofrekogfiles()['list']['entries']:
-    print('node-> ' + entry['entry']['id'] + ' labels-> ' + str(getrekogfilesinfo(entry['entry']['id'])['entry']['properties']['schema:label'])) #debugging
+    #print('node-> ' + entry['entry']['id'] + ' labels-> ' + str(getrekogfilesinfo(entry['entry']['id'])['entry']['properties']['schema:label'])) #debugging
     #imageID.append(entry['entry']['id'])
     #imageID.append(downloadImages(entry['entry']['id'],path)) #use devpath for local devel
     rekogFilesArray.append("["+
       downloadImages(entry['entry']['id'],path)+","+
       entry['entry']['name']+","+
-      str(getrekogfilesinfo(entry['entry']['id'])['entry']['properties']['schema:label'])
+      str(getrekogfilesinfo(entry['entry']['id'])['entry']['properties']['schema:label'])+"]"
       )
 
   rekogDF = pd.DataFrame([rekogFilesArray]).T
   rekogDF.rename(columns=cols,inplace=True)
 
   print (rekogDF)
-  rekogDF.to_excel('auditApps.xlsx')
+  rekogDF.to_excel('rekogfiles.xlsx')
 
-  #return imageIDDF
+  return rekogDF
 
 if __name__ == "__main__":
   main()
