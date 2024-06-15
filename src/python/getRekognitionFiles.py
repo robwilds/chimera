@@ -69,7 +69,7 @@ def main():
   rekogLabels = []
   rekogName = []
   #clean the download folder now!
-  cleanFolder(path)
+  #cleanFolder(path)
 
   #print('search result --> ' + json.dumps(pullListofrekogfiles())) #debug
   #now loop and get all images to download and populate data frame columns

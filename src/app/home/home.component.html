@@ -1,20 +1,10 @@
 <div id="container" style="margin-top:10px;">
 <mat-grid-list cols="2" rowHeight="2:1" gutterSize="10px">
-  <mat-grid-tile style="background-color: red;">
-    <mat-grid-tile-header>Samantha Beasley</mat-grid-tile-header>
-    <img src="../../assets/woman2.jpeg" class="tileImages">
-    <button mat-button (click)="openDialog()">INFO</button></mat-grid-tile>
-  <mat-grid-tile >
-    <mat-grid-tile-header>Elysah Maxwell</mat-grid-tile-header>
-    <img src="../../assets/woman1.jpg" class="tileImages">
-    <button mat-button (click)="openDialog()">INFO</button></mat-grid-tile>
-  <mat-grid-tile>
-    <mat-grid-tile-header>Donald Ramson</mat-grid-tile-header>
-    <img src="../../assets/man1.jpg" class="tileImages">
-    <button mat-button (click)="openDialog()">INFO</button></mat-grid-tile>
-  <mat-grid-tile>
-    <mat-grid-tile-header>Bill Marsh</mat-grid-tile-header>
-    <img src="../../assets/man2.jpg" class="tileImages">
-    <button mat-button (click)="openDialog()">INFO</button></mat-grid-tile>
-</mat-grid-list>
+    <mat-grid-tile *ngFor="let rkline of rkdata" [ngClass]="(rkline.labels.indexOf('Weapon') > -1)?'tileWeapon':''">
+      <mat-grid-tile-header>{{rkline.name}}</mat-grid-tile-header>
+      <img src="./assets/rekogimages/{{rkline.src}}" class="tileImages">
+      <button mat-button (click)="openDialog()">INFO</button></mat-grid-tile>
+  </mat-grid-list>
+{{rkdata[0].name}}
+
 </div>

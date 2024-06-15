@@ -20,20 +20,25 @@ export interface rekogData {
 export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
+
+    setTimeout(() => {
       this.queryWebService();
+    },500)
+
   }
 
   constructor(private http: HttpClient){}
   readonly dialog = inject(MatDialog);
-
+  rkdata:any;
   longText = ``;
   webserviceURL = 'http://127.0.0.1:5202/getrekognitionfiles'
 
   queryWebService(){
 
-    this.http.get<rekogData>(this.webserviceURL).subscribe(data =>
+  this.http.get<rekogData>(this.webserviceURL).subscribe(data =>
       {
-        console.log(data);
+        this.rkdata = data;
+        console.log(this.rkdata);
       })
   }
   openDialog() {
