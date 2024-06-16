@@ -9,6 +9,6 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts",
-    "**/src/assets/rekogimages/*"
+    "assets",
   ]
 }
