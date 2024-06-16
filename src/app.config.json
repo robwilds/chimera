@@ -16,6 +16,64 @@
     "redirectUri": "/",
     "redirectUriLogout": "/logout"
   },
+  "content-metadata": {
+    "presets": {
+      "default": {
+        "exif:exif": "*",
+        "cm:generalclassifiable": "*",
+        "cm:complianceable": "*",
+        "cm:dublincore": "*",
+        "cm:effectivity": "*",
+        "cm:summarizable": "*",
+        "cm:versionable": "*",
+        "cm:templatable": "*",
+        "cm:emailed": "*",
+        "emailserver:aliasable": "*",
+        "cm:taggable": "*",
+        "app:inlineeditable": "*",
+        "cm:geographic": "*",
+        "audio:audio": "*",
+        "cm:indexControl": "*",
+        "dp:restrictable": "*",
+        "smf:customConfigSmartFolder": "*",
+        "smf:systemConfigSmartFolder": "*",
+        "ai:products": "*",
+        "ai:dates": "*",
+        "ai:places": "*",
+        "ai:events": "*",
+        "ai:organizations": "*",
+        "ai:people": "*",
+        "ai:things": "*",
+        "ai:quantities": "*",
+        "ai:creativeWorks": "*",
+        "ai:labels": "*",
+        "ai:textLines": "*"
+      },
+      "all-aspects": "*",
+      "custom-title": [
+        {
+          "title": "Exif",
+          "items": [
+            {
+              "aspect": "exif:exif",
+              "editing": false,
+              "properties": [
+                "exif:pixelXDimension",
+                {
+                  "title": "Custom YDimension Name",
+                  "name": "exif:pixelYDimension"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "multi-value-pipe-separator": ", ",
+    "multi-value-chips": true,
+    "copy-to-clipboard-action": true,
+    "selectFilterLimit": 5
+  },
   "application": {
     "name": "Alfresco ADF Application"
   },
