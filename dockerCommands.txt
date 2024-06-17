@@ -2,5 +2,5 @@ sudo npm run build
 docker stop chimera
 docker rm chimera
 docker rmi wildsdocker/chimera:latestx86 --force
-docker buildx build --platform=linux/amd64 -t wildsdocker/chimera:latestx86 .;docker run -d -p 4200:80 -p 5202:5202 --name carousel wildsdocker/chimera:latestx86
+docker buildx build --platform=linux/amd64 -t wildsdocker/chimera:latestx86 .;docker run -d -p 4200:80 -p 5202:5202 --name chimera wildsdocker/chimera:latestx86
 docker push wildsdocker/chimera:latestx86

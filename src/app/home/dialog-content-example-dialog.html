@@ -1,25 +1,37 @@
 <h2 mat-dialog-title>{{data.name}}</h2>
-<mat-dialog-content class="mat-typography" >
-  <mat-grid-list cols="2" rowHeight="1:1" gutterSize="10px" style="height:100%;">
-    <mat-grid-tile style="background:none;">
-      <img src="./assets/rekogimages/{{data.src}}" class="detailImages">
-    </mat-grid-tile >
-    <mat-grid-tile style="background:none !important;">
+<mat-dialog-content class="mat-typography" style="height: 100%">
+  <mat-grid-list
+    cols="2"
+    rowHeight="1:1"
+    gutterSize="10px"
+    style="height: 100%"
+  >
+    <mat-grid-tile style="background: none">
+      <img src="./assets/rekogimages/{{data.src}}" class="detailImages" />
+    </mat-grid-tile>
+    <mat-grid-tile style="background: none !important">
+      <div style="width: 400px; height: 100%; overflow: auto">
+        <adf-tag-node-list [nodeId]="data.nodeid"> </adf-tag-node-list>
 
-</mat-grid-tile>
-</mat-grid-list>
-</mat-dialog-content>
-<adf-tag-node-actions-list
-      [nodeId]="data.nodeid"
-      >
-  </adf-tag-node-actions-list>
-  <adf-content-metadata-card
-    [displayEmpty]="true"
+        <!--adf-tag-node-actions-list
+              [nodeId]="data.nodeid"
+              >
+          </adf-tag-node-actions-list-->
+
+        <!--adf-content-metadata-card
+    [displayEmpty]="false"
     [preset]="'*'"
     [node]="data.nodeid"
     [multi]="true">
-</adf-content-metadata-card>
+</adf-content-metadata-card-->
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Start Workflow</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+    Start Workflow
+  </button>
 </mat-dialog-actions>

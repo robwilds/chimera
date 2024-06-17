@@ -48,6 +48,7 @@
               "src/favicon-96x96.png",
               "src/app.config.json",
               "src/versions.json",
+              "src/python"
               {
                 "glob": "**/*",
                 "input": "resources",

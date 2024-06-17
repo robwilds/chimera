@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit,AfterViewInit {
   }
   openDialog(i:any) {
 
-    console.log("i passed in -->" + i);
+    //console.log("i passed in -->" + i);
     const dialogRef = this.dialog.open(DialogContentExampleDialog,{
       height:'100%',
       width:'100%',
