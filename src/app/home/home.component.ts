@@ -8,6 +8,17 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlfrescoApi } from '@alfresco/js-api';
 import { ContentModule } from '@alfresco/adf-content-services';
+import { CommonModule } from '@angular/common';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  group,
+  query,
+  stagger
+  } from '@angular/animations';
 export interface rekogData {
   src: string;
   name: string;
@@ -15,11 +26,26 @@ export interface rekogData {
   nodeid:string
 }
 
+const listAnimation = trigger('listAnimation', [
+  transition('* <=> *', [
+    query(':enter',
+      [style({ opacity: 0 }), stagger('600ms', animate('600ms ease-out', style({ opacity: 1 })))],
+      { optional: true }
+    ),
+    query(':leave',
+      animate('200ms', style({ opacity: 0 })),
+      { optional: true }
+    )
+  ])
+]);
+
 @Component({
   selector: 'app-home',
   styleUrls:['./home.component.scss'],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [listAnimation]
+
 })
 export class HomeComponent implements OnInit,AfterViewInit {
 
@@ -74,11 +100,21 @@ export class HomeComponent implements OnInit,AfterViewInit {
   styleUrls:['./home.component.scss'],
   templateUrl: './dialog-content-example-dialog.html',
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule,MatGridListModule,ContentModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatDialogModule, MatButtonModule,MatGridListModule,ContentModule,CommonModule],
+  //changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DialogContentExampleDialog {
+export class DialogContentExampleDialog implements AfterViewInit{
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: rekogData) {}
+  showElements:boolean=false
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.showElements = true;
+    },500)
+
+  }
+
+
 
 }

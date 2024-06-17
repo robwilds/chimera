@@ -9,9 +9,12 @@
     <mat-grid-tile style="background: none">
       <img src="./assets/rekogimages/{{data.src}}" class="detailImages" />
     </mat-grid-tile>
-    <mat-grid-tile style="background: none !important">
-      <div style="width: 400px; height: 100%; overflow: auto">
-        <adf-tag-node-list [nodeId]="data.nodeid"> </adf-tag-node-list>
+    <mat-grid-tile style="background: none !important" >
+      <div style="width: 400px; height: 100%; overflow: auto" *ngIf="showElements">
+        <adf-tag-node-list
+          [nodeId]="data.nodeid"
+        >
+        </adf-tag-node-list>
 
         <!--adf-tag-node-actions-list
               [nodeId]="data.nodeid"
