@@ -1,11 +1,24 @@
-<adf-sidenav-layout [sidenavMin]="70" [sidenavMax]="200" [stepOver]="780" [hideSidenav]="false" [expandedSidenav]="false">
+<adf-sidenav-layout [sidenavMin]="40" [sidenavMax]="200" [stepOver]="780" [hideSidenav]="true" [expandedSidenav]="false">
 
     <adf-sidenav-layout-header>
       <ng-template let-toggleMenu="toggleMenu">
         <adf-layout-header id="adf-header" [title]="'ADF'" color="primary" >
+
+          <div id="searchDiv" style="width:100%;">
+          <input type="text" [searchAutocomplete]="search" style="margin:auto;">
+          <adf-search #search="searchAutocomplete">
+            <ng-template let-result>
+                <span *ngFor="let item of result?.list?.entries">
+                    {{ item?.entry.name }}
+                </span>
+            </ng-template>
+        </adf-search>
+</div>
+
         </adf-layout-header>
       </ng-template>
     </adf-sidenav-layout-header>
+
 
     <adf-sidenav-layout-navigation>
         <ng-template let-isMenuMinimized="isMenuMinimized">
