@@ -45,7 +45,6 @@ const listAnimation = trigger('listAnimation', [
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [listAnimation]
-
 })
 export class HomeComponent implements OnInit,AfterViewInit {
 
@@ -54,10 +53,8 @@ export class HomeComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-      /* setTimeout(() => {
-      this.queryWebService();
-    },50) */
   }
+
   constructor(private http: HttpClient){}
   readonly dialog = inject(MatDialog);
   rkdata:any;

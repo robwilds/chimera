@@ -1,3 +1,33 @@
+@-webkit-keyframes pulse {
+  0% { background-color: #ed8c55; }
+  50% { background-color: #FFF; }
+  100% { background-color: #ed8c55; }
+}
+
+@-moz-keyframes pulse {
+  0% { background-color: #ed8c55; }
+  50% { background-color: #FFF; }
+  100% { background-color: #ed8c55; }
+}
+
+@-o-keyframes pulse {
+  0% { background-color: #ed8c55; }
+  50% { background-color: #FFF; }
+  100% { background-color: #ed8c55; }
+}
+
+@keyframes pulse {
+  0% { background-color: #ed8c55; }
+  50% { background-color: #FFF; }
+  100% { background-color: #ed8c55; }
+}
+
+@keyframes redPulse {
+  from { background-color: #fff; -webkit-box-shadow: 0 0 0 #333; }
+  50% { background-color: #f00; -webkit-box-shadow: 0 0 16px #f00; }
+  to { background-color: #fff; -webkit-box-shadow: 0 0 0 #333; }
+}
+
 mat-grid-tile {
   background: mintcream;
   flex-direction: column;
@@ -11,7 +41,10 @@ mat-grid-tile {
 }
 
 .tileWeapon {
-  background: darkred;
+  background: #f00;
+  -webkit-animation-name: redPulse;
+    -webkit-animation-duration: 2.5s;
+    -webkit-animation-iteration-count: 5;
 }
 
 .mat-grid-tile-content
@@ -30,3 +63,10 @@ mat-grid-tile {
   height:100%;
   width:100%;
 }
+
+.pulseGlow {
+  -webkit-animation-name: redPulse;
+  -webkit-animation-duration: 2.5s;
+  -webkit-animation-iteration-count: infinite;
+}
+

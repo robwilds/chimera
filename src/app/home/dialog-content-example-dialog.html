@@ -10,17 +10,13 @@
       <img src="./assets/rekogimages/{{data.src}}" class="detailImages" />
     </mat-grid-tile>
     <mat-grid-tile style="background: none !important" >
-      <div style="width: 400px; height: 100%; overflow: auto" *ngIf="showElements">
+      <div style="width:100%; height: 100%; overflow: auto" *ngIf="showElements">
         <adf-tag-node-list
           [nodeId]="data.nodeid"
+          [limitTagsDisplayed]="true"
+          [showDelete]="true"
         >
         </adf-tag-node-list>
-
-        <!--adf-tag-node-actions-list
-              [nodeId]="data.nodeid"
-              >
-          </adf-tag-node-actions-list-->
-
         <!--adf-content-metadata-card
     [displayEmpty]="false"
     [preset]="'*'"
