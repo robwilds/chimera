@@ -17,17 +17,20 @@
           [showDelete]="true"
         >
         </adf-tag-node-list>
-        <!--adf-content-metadata-card
+        <adf-content-metadata-card
     [displayEmpty]="false"
     [preset]="'*'"
     [node]="data.nodeid"
     [multi]="true">
-</adf-content-metadata-card-->
+</adf-content-metadata-card>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
 </mat-dialog-content>
-
+<adf-start-process
+    [values]="formValues"
+    [appId]="1" >
+</adf-start-process>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-button [mat-dialog-close]="true" cdkFocusInitial>

@@ -9,6 +9,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AlfrescoApi } from '@alfresco/js-api';
 import { ContentModule } from '@alfresco/adf-content-services';
 import { CommonModule } from '@angular/common';
+import { MinimalNode } from '@alfresco/js-api';
+import { ProcessService, Form} from '@alfresco/adf-process-services';
+import { NodesApiService } from '@alfresco/adf-content-services';
+import { FormValues } from '@alfresco/adf-core';
+import { ProcessModule } from '@alfresco/adf-process-services';
+
 import {
   trigger,
   state,
@@ -97,13 +103,20 @@ export class HomeComponent implements OnInit,AfterViewInit {
   styleUrls:['./home.component.scss'],
   templateUrl: './dialog-content-example-dialog.html',
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule,MatGridListModule,ContentModule,CommonModule],
+  imports: [ProcessModule,ContentModule,MatDialogModule, MatButtonModule,MatGridListModule,ContentModule,CommonModule],
   //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogContentExampleDialog implements AfterViewInit{
+showElements:boolean=false
+  node: MinimalNode = null;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: rekogData) {}
-  showElements:boolean=false
+  formValues: FormValues  = {
+    'content' : this.node}
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: rekogData,nodesApiService:NodesApiService) {
+
+    nodesApiService.getNode(data.nodeid).subscribe((minimalNode) => {this.node = minimalNode;console.log(minimalNode);});
+};
 
   ngAfterViewInit(): void {
     setTimeout(() => {
