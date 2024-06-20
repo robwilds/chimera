@@ -30,6 +30,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ReportingComponent } from './reporting/reporting.component';
 
 @NgModule({
     imports: [
@@ -60,7 +61,8 @@ import {MatDialogModule} from '@angular/material/dialog';
         StartProcessComponent,
         AppLayoutComponent,
         FileViewComponent,
-        BlobViewComponent
+        BlobViewComponent,
+        ReportingComponent,
     ],
     providers: [
         PreviewService,

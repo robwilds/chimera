@@ -3,6 +3,14 @@ import getRekognitionFiles as getRekognitionFiles
 
 from flask import Flask,json,Response,request
 from flask_cors import CORS, cross_origin
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from the .env file
+load_dotenv()
+
+port = os.getenv("port")
+
 
 app = Flask(__name__)
 
@@ -22,4 +30,4 @@ def getrekognitionfiles():
 
 if __name__ == "__main__":
   # Please do not set debug=True in production
-  app.run(host="0.0.0.0", port=5202, debug=True)
+  app.run(host="0.0.0.0", port=port, debug=True)

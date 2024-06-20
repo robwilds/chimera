@@ -23,9 +23,9 @@
 }
 
 @keyframes redPulse {
-  from { background-color: #fff; -webkit-box-shadow: 0 0 0 #333; }
+  from { background-color: blue; -webkit-box-shadow: 0 0 0 #333; }
   50% { background-color: #f00; -webkit-box-shadow: 0 0 16px #f00; }
-  to { background-color: #fff; -webkit-box-shadow: 0 0 0 #333; }
+  to { background-color: blue; -webkit-box-shadow: 0 0 0 #333; }
 }
 
 mat-grid-tile {
