@@ -1,3 +1,3 @@
 #!/bin/sh
-service nginx restart
-python3 app.py
+service nginx start
+#python3 app.py

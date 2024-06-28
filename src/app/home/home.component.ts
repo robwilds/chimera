@@ -91,7 +91,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       width: "100%",
       data: {
         src: this.rkdata[i].src,
-        nodeid: this.rkdata[i].src.split(".")[0],
+        nodeid: this.rkdata[i].src
+          .split(".")[0]
+          .substring(this.rkdata[i].src.length - 40),
         name: this.rkdata[i].name,
         labels: this.rkdata[i].labels,
       },

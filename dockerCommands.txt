@@ -1,6 +1,17 @@
 sudo npm run build
 docker stop chimera
 docker rm chimera
-docker rmi wildsdocker/chimera:latestx86 --force
-docker buildx build --platform=linux/amd64 -t wildsdocker/chimera:latestx86 .;docker run -d -p 4200:80 -p 5202:5202 --name chimera wildsdocker/chimera:latestx86
-docker push wildsdocker/chimera:latestx86
+docker rmi wildsdocker/chimera:v1 --force
+
+docker buildx build \
+--platform=linux/amd64 -t wildsdocker/chimera:v1 .
+
+docker run -d -p 4200:80 --name chimera wildsdocker/chimera:v1
+
+docker pull wildsdocker/queryalfapi:v1
+
+docker run -d -it -p 9200:9200 \
+--name queryAlfAPI \
+wildsdocker/queryalfapi:v1
+
+docker push wildsdocker/chimera:v1

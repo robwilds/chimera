@@ -1,12 +1,20 @@
-<div id="container" style="margin-top:10px;" *ngIf="showImages">
-<mat-grid-list [@listAnimation]="rkdata.length" cols="2" rowHeight="2:1" gutterSize="10px" >
-    <mat-grid-tile  *ngFor="let rkline of rkdata;index as i" [ngClass]="(rkline.labels.indexOf('Weapon') > -1)?'tileWeapon':''">
-      <mat-grid-tile-header>{{rkline.name}}</mat-grid-tile-header>
-      <img src="./assets/rekogimages/{{rkline.src}}" class="tileImages">
+<div id="container" style="margin-top: 10px" *ngIf="showImages">
+  <mat-grid-list
+    [@listAnimation]="rkdata.length"
+    cols="2"
+    rowHeight="2:1"
+    gutterSize="10px"
+  >
+    <mat-grid-tile
+      *ngFor="let rkline of rkdata; index as i"
+      [ngClass]="rkline.labels.indexOf('Weapon') > -1 ? 'tileWeapon' : ''"
+    >
+      <mat-grid-tile-header>{{ rkline.name }}</mat-grid-tile-header>
+      <img src="{{ rkline.src }}" class="tileImages" />
       <button mat-mini-fab (click)="openDialog(i)" class="infobutton">
         <mat-icon>search</mat-icon>
       </button>
-      </mat-grid-tile>
+    </mat-grid-tile>
   </mat-grid-list>
-{{rkdata[0].name}}
+  {{ rkdata[0].name }}
 </div>
