@@ -17,7 +17,9 @@ import { MinimalNode } from "@alfresco/js-api";
 import { NodesApiService } from "@alfresco/adf-content-services";
 import { FormValues } from "@alfresco/adf-core";
 import { ProcessModule } from "@alfresco/adf-process-services";
-
+import { MatAccordion, MatExpansionModule } from "@angular/material/expansion";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
 import {
   trigger,
   state,
@@ -111,6 +113,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   templateUrl: "./dialog-content-example-dialog.html",
   standalone: true,
   imports: [
+    MatIconModule,
+    MatExpansionModule,
     ProcessModule,
     ContentModule,
     MatDialogModule,
@@ -125,9 +129,10 @@ export class DialogContentExampleDialog implements AfterViewInit {
   showElements: boolean = false;
   node: MinimalNode = null;
 
-  formValues: FormValues = {
+  /* formValues: FormValues = {
     content: this.node,
-  };
+  }; */
+  formValues: FormValues;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: rekogData,
@@ -135,7 +140,10 @@ export class DialogContentExampleDialog implements AfterViewInit {
   ) {
     nodesApiService.getNode(data.nodeid).subscribe((minimalNode) => {
       this.node = minimalNode;
-      console.log(minimalNode);
+      this.formValues = {
+        content: this.node, //content is the id of the file upload field!
+      };
+      console.log(this.node);
     });
   }
 

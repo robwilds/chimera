@@ -32,10 +32,26 @@
     </mat-grid-tile>
   </mat-grid-list>
 </mat-dialog-content>
-<adf-start-process [values]="formValues" [appId]="1"> </adf-start-process>
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Start Workflow</mat-panel-title>
+      <mat-panel-description>
+        Start a workflow to get this image reviewed for accuracy
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <adf-start-process
+      [values]="formValues"
+      [name]="'Please review this Image!'"
+      [processDefinitionName]="'Ad hoc Task'"
+      [appId]="1"
+    >
+    </adf-start-process
+  ></mat-expansion-panel>
+</mat-accordion>
+
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
-    Start Workflow
-  </button>
+  <button mat-button mat-dialog-close>Close</button>
 </mat-dialog-actions>
