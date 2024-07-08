@@ -57,12 +57,17 @@ const listAnimation = trigger("listAnimation", [
   selector: "app-home",
   styleUrls: ["./home.component.scss"],
   templateUrl: "./home.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [listAnimation],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
-    this.queryWebService();
+    setInterval(() => {
+      this.queryWebService();
+      console.log("called web service");
+    }, 5000);
+
+    //this.queryWebService;
   }
 
   ngAfterViewInit(): void {}
@@ -70,9 +75,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(private http: HttpClient) {}
 
   readonly dialog = inject(MatDialog);
-  rkdata: any;
+  rkdata = {};
   showImages: boolean = true;
-  //this will automatically add the current hostname to the URL for the web service
+  //window.location.hostname will automatically add the current hostname to the URL for the web service
   webserviceURL =
     window.location.protocol +
     "//" +
@@ -81,9 +86,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   queryWebService() {
     this.http.get<rekogData>(this.webserviceURL).subscribe((data) => {
-      this.rkdata = data;
-      this.showImages = true;
-      console.log(this.rkdata);
+      //get current length of rkdata.  if different than what's pulled
+      //from the web service call then set the data to rkdata which
+      //causes change detection to fire
+      //this could be dangerous as someone could remove/add the same number
+      //of items but a simple refresh of the browser checks that
+      if (Object.keys(this.rkdata).length != Object.keys(data).length) {
+        this.rkdata = data;
+      }
+      console.log("data from web service call-> " + this.rkdata);
     });
   }
   openDialog(i: any) {
@@ -94,8 +105,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       data: {
         src: this.rkdata[i].src,
         nodeid: this.rkdata[i].src
-          .split(".")[0]
-          .substring(this.rkdata[i].src.length - 40),
+          .split(".")[0] //strip the extension from the string
+          .substring(this.rkdata[i].src.length - 40), //now get the last 40 characters which is the nodeid
         name: this.rkdata[i].name,
         labels: this.rkdata[i].labels,
       },
@@ -151,8 +162,12 @@ export class DialogContentExampleDialog implements AfterViewInit {
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.showElements = true;
-    }, 500);
+    }, 100);
   }
 
-  processStarted(event: any) {}
+  processStarted(event: any) {
+    this.panelOpenState = false;
+  }
+
+  processError(event: any) {}
 }

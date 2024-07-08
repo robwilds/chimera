@@ -34,6 +34,7 @@
 </mat-dialog-content>
 <mat-accordion class="example-headers-align" multi>
   <mat-expansion-panel
+    [(expanded)]="panelOpenState"
     (opened)="panelOpenState = true"
     (closed)="panelOpenState = false"
   >
@@ -51,6 +52,8 @@
       [processDefinitionName]="'Ad hoc Task'"
       [appId]="1"
       (start)="processStarted($event)"
+      (error)="processError($event)"
+      (cancel)="processStarted($event)"
     >
     </adf-start-process
   ></mat-expansion-panel>

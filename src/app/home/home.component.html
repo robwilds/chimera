@@ -1,5 +1,6 @@
-<div id="container" style="margin-top: 10px" *ngIf="showImages">
+<div id="container" style="margin-top: 10px">
   <mat-grid-list
+    *ngIf="showImages"
     [@listAnimation]="rkdata.length"
     cols="2"
     rowHeight="2:1"
