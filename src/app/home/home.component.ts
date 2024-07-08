@@ -128,6 +128,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 export class DialogContentExampleDialog implements AfterViewInit {
   showElements: boolean = false;
   node: MinimalNode = null;
+  panelOpenState = false;
 
   /* formValues: FormValues = {
     content: this.node,
@@ -152,4 +153,6 @@ export class DialogContentExampleDialog implements AfterViewInit {
       this.showElements = true;
     }, 500);
   }
+
+  processStarted(event: any) {}
 }

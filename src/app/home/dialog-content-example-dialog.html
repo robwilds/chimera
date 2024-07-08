@@ -33,7 +33,10 @@
   </mat-grid-list>
 </mat-dialog-content>
 <mat-accordion class="example-headers-align" multi>
-  <mat-expansion-panel>
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title> Start Workflow</mat-panel-title>
       <mat-panel-description>
@@ -47,6 +50,7 @@
       [name]="'Please review this Image!'"
       [processDefinitionName]="'Ad hoc Task'"
       [appId]="1"
+      (start)="processStarted($event)"
     >
     </adf-start-process
   ></mat-expansion-panel>
