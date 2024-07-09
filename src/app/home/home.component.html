@@ -1,8 +1,8 @@
-<div id="container" style="margin-top: 10px">
+<div #theContainer style="margin-top: 10px">
   <mat-grid-list
     *ngIf="showImages"
     [@listAnimation]="rkdata.length"
-    cols="2"
+    cols="{{ columnNum }}"
     rowHeight="2:1"
     gutterSize="10px"
   >
@@ -17,5 +17,4 @@
       </button>
     </mat-grid-tile>
   </mat-grid-list>
-  {{ rkdata[0].name }}
 </div>

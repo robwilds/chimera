@@ -1,10 +1,11 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   Component,
   Inject,
   OnInit,
   inject,
+  ViewChild,
+  HostListener,
 } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDialog } from "@angular/material/dialog";
@@ -65,16 +66,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
     setInterval(() => {
       this.queryWebService();
       console.log("called web service");
-    }, 5000);
+    }, 3000);
 
     //this.queryWebService;
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    this.setColNum();
+  }
 
   constructor(private http: HttpClient) {}
-
+  @ViewChild("theContainer") theContainer;
   readonly dialog = inject(MatDialog);
+  columnNum = 2;
+  tileSize = 230; //one tile should have this width
   rkdata = {};
   showImages: boolean = true;
   //window.location.hostname will automatically add the current hostname to the URL for the web service
@@ -83,6 +88,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
     "//" +
     window.location.hostname +
     ":9200/getrekognitionfiles";
+
+  //recalculating upon browser window resize
+  @HostListener("window:resize", ["$event"])
+  onResize(event) {
+    this.setColNum();
+  }
+
+  setColNum() {
+    let width = this.theContainer.nativeElement.offsetWidth;
+    this.columnNum = Math.trunc(width / this.tileSize);
+  }
 
   queryWebService() {
     this.http.get<rekogData>(this.webserviceURL).subscribe((data) => {
