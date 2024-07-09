@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     setInterval(() => {
       this.queryWebService();
       console.log("called web service");
-    }, 3000);
+    }, 1000);
 
     //this.queryWebService;
   }
@@ -78,8 +78,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(private http: HttpClient) {}
   @ViewChild("theContainer") theContainer;
   readonly dialog = inject(MatDialog);
-  columnNum = 2;
-  tileSize = 230; //one tile should have this width
+  columnNum = 3;
+  tileSize = 400; //one tile should have this width
   rkdata = {};
   showImages: boolean = true;
   //window.location.hostname will automatically add the current hostname to the URL for the web service
@@ -113,6 +113,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       console.log("data from web service call-> " + this.rkdata);
     });
   }
+
   openDialog(i: any) {
     //console.log("i passed in -->" + i);
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
