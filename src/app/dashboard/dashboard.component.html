@@ -1,0 +1,10 @@
+<div
+  cdkDropList
+  cdkDropListOrientation="mixed"
+  class="example-list"
+  (cdkDropListDropped)="drop($event)"
+>
+  <div class="example-box" *ngFor="let item of items; track: item" cdkDrag>
+    {{ item }}
+  </div>
+</div>

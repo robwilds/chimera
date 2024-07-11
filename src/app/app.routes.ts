@@ -29,6 +29,7 @@ import { FileViewComponent } from "./file-view/file-view.component";
 import { BlobViewComponent } from "./file-view/blob-view.component";
 import { CaptureComponent } from "./capture/capture.component";
 import { ReportingComponent } from "./reporting/reporting.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
 
 export const appRoutes: Routes = [
   {
@@ -52,8 +53,14 @@ export const appRoutes: Routes = [
         component: HomeComponent,
       },
       {
+        path: "dashboard",
+        component: DashboardComponent,
+        canActivate: [AuthGuardEcm],
+      },
+      {
         path: "home",
         component: HomeComponent,
+        canActivate: [AuthGuardEcm],
       },
       {
         path: "reporting",
