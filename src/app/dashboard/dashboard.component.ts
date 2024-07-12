@@ -16,18 +16,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  items = [
-    "Zero",
-    "One",
-    "Two",
-    "Three",
-    "Four",
-    "Five",
-    "Six",
-    "Seven",
-    "Eight",
-    "Nine",
-  ];
+  items = ["Zero", "One", "Two", "Three", "Four"];
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.items, event.previousIndex, event.currentIndex);
