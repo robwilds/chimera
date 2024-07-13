@@ -35,7 +35,9 @@ export interface rekogData {
   src: string;
   name: string;
   labels: [];
+  parentId: string;
   nodeid: string;
+  modifiedDate: Date;
 }
 
 const listAnimation = trigger("listAnimation", [
@@ -65,8 +67,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     setInterval(() => {
       this.queryWebService();
-      console.log("called web service");
-    }, 1000);
+      //console.log("called web service");
+    }, 3000);
 
     //this.queryWebService;
   }
@@ -87,7 +89,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     window.location.protocol +
     "//" +
     window.location.hostname +
-    ":9200/getrekognitionfiles";
+    ":9600/getrekognitionfiles";
 
   //recalculating upon browser window resize
   @HostListener("window:resize", ["$event"])
@@ -121,11 +123,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
       width: "100%",
       data: {
         src: this.rkdata[i].src,
-        nodeid: this.rkdata[i].src
-          .split(".")[0] //strip the extension from the string
-          .substring(this.rkdata[i].src.length - 40), //now get the last 40 characters which is the nodeid
+        nodeid: this.rkdata[i].nodeId,
         name: this.rkdata[i].name,
         labels: this.rkdata[i].labels,
+        dateModified: this.rkdata[i].modifiedDate,
+        parentId: this.rkdata[i].parentId,
       },
     });
 
