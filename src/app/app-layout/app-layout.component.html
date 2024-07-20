@@ -9,18 +9,29 @@
     <ng-template let-toggleMenu="toggleMenu">
       <adf-layout-header id="adf-header" [title]="'ADF'" color="primary">
         <div id="searchDiv" style="width: 100%">
-          <input
+          <!-- <input
             type="text"
             [searchAutocomplete]="search"
             style="margin: auto"
-          />
-          <adf-search #search="searchAutocomplete">
+          /> -->
+
+          <adf-search-control
+            [highlight]="true"
+            (optionClicked)="onItemClicked($event)"
+            (submit)="onSearchSubmit($event)"
+          >
+            <!-- <adf-empty-search-result>
+        <span>I don't want to show you this result</span>
+    </adf-empty-search-result> -->
+          </adf-search-control>
+
+          <!-- <adf-search #search="searchAutocomplete">
             <ng-template let-result>
               <span *ngFor="let item of result?.list?.entries">
                 {{ item?.entry.name }}
               </span>
             </ng-template>
-          </adf-search>
+          </adf-search> -->
         </div>
       </adf-layout-header>
     </ng-template>
