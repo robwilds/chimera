@@ -159,6 +159,10 @@ export class DialogContentExampleDialog implements AfterViewInit {
   showElements: boolean = false;
   node: MinimalNode = null;
   panelOpenState = false;
+  panelCloseState = true;
+
+  topPanelState = true;
+  bottomPanelState = false;
 
   /* formValues: FormValues = {
     content: this.node,
@@ -185,7 +189,7 @@ export class DialogContentExampleDialog implements AfterViewInit {
   }
 
   processStarted(event: any) {
-    this.panelOpenState = false;
+    this.bottomPanelState = false;
   }
 
   processError(event: any) {}
