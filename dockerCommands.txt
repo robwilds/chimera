@@ -1,17 +1,21 @@
-sudo npm run build
+sudo npm run build --prod --baseHref=/chimera/
+
 docker stop chimera
 docker rm chimera
 docker rmi wildsdocker/chimera:v1 --force
 
 docker buildx build \
---platform=linux/amd64 -t wildsdocker/chimera:v1 .
+--platform=linux/amd64,linux/arm64 -t wildsdocker/chimera:v1 .
 
-docker run -d -p 4200:80 --name chimera wildsdocker/chimera:v1
+docker push wildsdocker/chimera:v1
 
+docker run -d -p 4200:4200 --name chimera wildsdocker/chimera:v1
+
+
+#to pull query alf to serve up data and files
 docker pull wildsdocker/queryalfapi:v1
 
 docker run -d -it -p 9200:9200 \
 --name queryAlfAPI \
 wildsdocker/queryalfapi:v1
 
-docker push wildsdocker/chimera:v1

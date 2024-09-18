@@ -11,7 +11,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatDialog } from "@angular/material/dialog";
 import { MatDialogModule, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { MatGridListModule } from "@angular/material/grid-list";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ContentModule } from "@alfresco/adf-content-services";
 import { CommonModule } from "@angular/common";
 import { MinimalNode } from "@alfresco/js-api";
@@ -91,6 +91,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
     window.location.hostname +
     ":9600/getrekognitionfiles";
 
+  // Http Options
+  httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    }),
+  };
+
   //recalculating upon browser window resize
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -103,17 +111,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   queryWebService() {
-    this.http.get<rekogData>(this.webserviceURL).subscribe((data) => {
-      //get current length of rkdata.  if different than what's pulled
-      //from the web service call then set the data to rkdata which
-      //causes change detection to fire
-      //this could be dangerous as someone could remove/add the same number
-      //of items but a simple refresh of the browser checks that
-      if (Object.keys(this.rkdata).length != Object.keys(data).length) {
-        this.rkdata = data;
-      }
-      console.log("data from web service call-> " + this.rkdata);
-    });
+    this.http
+      .get<rekogData>(this.webserviceURL, this.httpOptions)
+      .subscribe((data) => {
+        //get current length of rkdata.  if different than what's pulled
+        //from the web service call then set the data to rkdata which
+        //causes change detection to fire
+        //this could be dangerous as someone could remove/add the same number
+        //of items but a simple refresh of the browser checks that
+        if (Object.keys(this.rkdata).length != Object.keys(data).length) {
+          this.rkdata = data;
+        }
+        console.log("data from web service call-> " + this.rkdata);
+      });
   }
 
   openDialog(i: any) {
