@@ -8,9 +8,18 @@
   >
     <mat-grid-tile
       *ngFor="let rkline of rkdata; index as i"
-      [ngClass]="rkline.labels.indexOf('Weapon') > -1 ? 'tileWeapon' : ''"
+      [ngClass]="{
+        tileWeapon: rkline.labels.indexOf('weapon') > -1,
+        tileHyland: rkline.labels.indexOf('hylandemployee') > -1
+      }"
     >
-      <mat-grid-tile-header>{{ rkline.name }}</mat-grid-tile-header>
+      <mat-grid-tile-header
+        class=".tileHyland !important"
+        [ngClass]="{
+          tileHyland: rkline.labels.indexOf('hylandemployee') > -1
+        }"
+        >{{ rkline.name }}</mat-grid-tile-header
+      >
       <img src="{{ rkline.src }}" class="tileImages" />
       <button mat-mini-fab (click)="openDialog(i)" class="infobutton">
         <mat-icon>search</mat-icon>
@@ -18,3 +27,4 @@
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+<!-- [ngClass]="rkline.labels.indexOf('Weapon') > -1 ? 'tileWeapon' : ''" -->
