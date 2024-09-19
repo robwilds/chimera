@@ -15,7 +15,7 @@ docker run -d -p 4200:4200 --name chimera wildsdocker/chimera:v1
 #to pull query alf to serve up data and files
 docker pull wildsdocker/queryalfapi:v1
 
-docker run -d -it -p 9200:9200 \
+docker run -d -it -p 9600:9600 \
 --name queryAlfAPI \
 wildsdocker/queryalfapi:v1
 
