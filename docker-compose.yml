@@ -1,11 +1,11 @@
-chimera:
-  image: wildsdocker/chimera:v1
-  ports:
-    - 4200:80
-queryalfapi:
-  image: wildsdocker/queryalfapi:v1
-  mem_limit: 200m
-  ports:
-    - 9600:9600
-  links:
-    - alfresco
+version: "3"
+
+services:
+  chimera:
+    image: wildsdocker/chimera:v1
+    ports:
+      - 4200:4200
+  queryalfapi:
+    image: wildsdocker/queryalfapi:v1
+    ports:
+      - 9600:9600

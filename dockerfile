@@ -9,6 +9,9 @@ WORKDIR /usr/local/app
 # Add the source code to app
 COPY ./ /usr/local/app/
 
+# update os and install vim
+RUN apt update -y && apt install -y vim
+
 # Install all the dependencies
 RUN npm install --legacy-peer-deps
 
