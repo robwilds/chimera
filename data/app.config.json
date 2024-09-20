@@ -1,0 +1,127 @@
+{
+  "$schema": "../node_modules/@alfresco/adf-core/app.config.schema.json",
+  "ecmHost": "{protocol}//{hostname}{:port}",
+  "bpmHost": "{protocol}//{hostname}{:port}",
+  "providers": "ALL",
+  "authType": "BASIC",
+  "identityHost": "{protocol}//{hostname}{:port}/auth/realms/alfresco",
+  "oauth2": {
+    "host": "{protocol}//{hostname}{:port}/auth/realms/alfresco",
+    "clientId": "alfresco",
+    "scope": "openid",
+    "secret": "",
+    "implicitFlow": true,
+    "silentLogin": true,
+    "redirectSilentIframeUri": "{protocol}//{hostname}{:port}/assets/silent-refresh.html",
+    "redirectUri": "/",
+    "redirectUriLogout": "/logout"
+  },
+  "content-metadata": {
+    "presets": {
+      "default": {
+        "exif:exif": "*",
+        "cm:generalclassifiable": "*",
+        "cm:complianceable": "*",
+        "cm:dublincore": "*",
+        "cm:effectivity": "*",
+        "cm:summarizable": "*",
+        "cm:versionable": "*",
+        "cm:templatable": "*",
+        "cm:emailed": "*",
+        "emailserver:aliasable": "*",
+        "cm:taggable": "*",
+        "app:inlineeditable": "*",
+        "cm:geographic": "*",
+        "audio:audio": "*",
+        "cm:indexControl": "*",
+        "dp:restrictable": "*",
+        "smf:customConfigSmartFolder": "*",
+        "smf:systemConfigSmartFolder": "*",
+        "ai:products": "*",
+        "ai:dates": "*",
+        "ai:places": "*",
+        "ai:events": "*",
+        "ai:organizations": "*",
+        "ai:people": "*",
+        "ai:things": "*",
+        "ai:quantities": "*",
+        "ai:creativeWorks": "*",
+        "ai:labels": "*",
+        "ai:textLines": "*"
+      },
+      "all-aspects": "*",
+      "custom-title": [
+        {
+          "title": "Exif",
+          "items": [
+            {
+              "aspect": "exif:exif",
+              "editing": false,
+              "properties": [
+                "exif:pixelXDimension",
+                {
+                  "title": "Custom YDimension Name",
+                  "name": "exif:pixelYDimension"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "multi-value-pipe-separator": ", ",
+    "multi-value-chips": true,
+    "copy-to-clipboard-action": true,
+    "selectFilterLimit": 5
+  },
+  "application": {
+    "name": "Alfresco ADF Application"
+  },
+  "languages": [
+    {
+      "key": "en",
+      "label": "English"
+    },
+    {
+      "key": "fr",
+      "label": "French"
+    },
+    {
+      "key": "de",
+      "label": "German"
+    },
+    {
+      "key": "it",
+      "label": "Italian"
+    },
+    {
+      "key": "es",
+      "label": "Spanish"
+    },
+    {
+      "key": "ja",
+      "label": "Japanese"
+    },
+    {
+      "key": "nl",
+      "label": "Dutch"
+    },
+    {
+      "key": "pt-BR",
+      "label": "Brazilian Portuguese"
+    },
+    {
+      "key": "nb",
+      "label": "Norwegian"
+    },
+    {
+      "key": "ru",
+      "label": "Russian"
+    },
+    {
+      "key": "zh-CN",
+      "label": "Simplified Chinese"
+    }
+  ],
+  "logLevel": "trace"
+}

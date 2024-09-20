@@ -1,11 +1,18 @@
-version: "3"
-
+volumes:
+  data:
 services:
   chimera:
     image: wildsdocker/chimera:v1
     ports:
       - 4200:4200
+    volumes:
+      - ${PWD}/data:/usr/local/app/static
+      - ${PWD}/data/swagger.json:/usr/local/app/static/swagger.json
+      - ${PWD}/data/app.config.json:/usr/local/app/static/app.config.json
   queryalfapi:
     image: wildsdocker/queryalfapi:v1
     ports:
       - 9600:9600
+    volumes:
+      - ${PWD}/data/envTemplate.txt:/python-docker/envTemplate.txt
+      - ${PWD}/data/.env:/python-docker/.env
