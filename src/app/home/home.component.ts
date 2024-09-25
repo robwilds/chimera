@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     setInterval(() => {
       this.queryWebService();
       //console.log("called web service");
-    }, 3000);
+    }, 10000);
 
     //this.queryWebService;
   }
