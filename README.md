@@ -10,13 +10,17 @@ Clicking on the magnifying glass for each image will bring up the ADF meta data 
 
 ## Setup
 
-This is intended to run with Alfresco ADP for solution engineers.  Simply add the contents of the docker-compose.yml to the existing ADFP yaml file.  
+This is intended to run with Alfresco ADP for solution engineers.  
+
+If you would like run this standalone:  Edit the docker-compose.yml with the environment variables accordingly then run docker compose up -d from command line within the folder adn a chimera container will start with the adf app and the microservice.
+
+If you would like to run everything local or in the cloud:  Edit the docker-compose.yml with the environment variables accordingly then  Simply add the contents of the docker-compose.yml to the existing ADP yaml file.  
 
 you can also edit the config.json file within the root ADP folder (where adp.py is located) to be sure that the two additional containers start when ./adp.py start is executed
 
 ## Running the customization
 
-Once everything is setup and running, you can go to http://localhost:4200 to see the customization.  be sure to click on the logout button to see the login page and login with demo/demo.
+Once everything is setup and running, you can go to http://<URL>:4200 to see the customization.  be sure to click on the logout button to see the login page and login with demo/demo.
 
 after logging in please wait a few moments to see any aws processed images to show up on the home page
 
