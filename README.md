@@ -1,3 +1,26 @@
+# Custom ADF to show AWS AI processed images
+
+## Overview
+
+This customnization utilizes a custom ADF app to visualize images processed with intelligence services.  
+
+Any file with aspect AI:Labels will be captured and displayed.  OOTB, there's hard coding to look for the word Hyland in the image and classify as "hylandemployee"  and present with a green box.  Also any weapons that are identifed will be flagged with a red box and flash momentarily on screen. 
+
+Clicking on the magnifying glass for each image will bring up the ADF meta data panel so you can see the properties including the tags.  You can also start a workflow in the workflow panel below (in case something needs to be review by other parties)
+
+## Setup
+
+This is intended to run with Alfresco ADP for solution engineers.  Simply add the contents of the docker-compose.yml to the existing ADFP yaml file.  
+
+you can also edit the config.json file within the root ADP folder (where adp.py is located) to be sure that the two additional containers start when ./adp.py start is executed
+
+## Running the customization
+
+Once everything is setup and running, you can go to http://localhost:4200 to see the customization.  be sure to click on the logout button to see the login page and login with demo/demo.
+
+after logging in please wait a few moments to see any aws processed images to show up on the home page
+
+
 # ADF/APS/ACS Application with Angular CLI
 
 Minimal ready-to-use Angular CLI project template pre-configured with ADF components.
