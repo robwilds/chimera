@@ -13,6 +13,7 @@ services:
       - ${PWD}/data:/usr/local/app/static
       - ${PWD}/data/swagger.json:/usr/local/app/static/swagger.json
       - ${PWD}/data/app.config.json:/usr/local/app/static/app.config.json
+    command: bash -c "npm install --legacy-peer-deps && npm start"
   queryalfapi:
     image: wildsdocker/queryalfapi:v2
     mem_limit: 200m

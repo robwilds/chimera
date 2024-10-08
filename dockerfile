@@ -12,9 +12,9 @@ COPY ./ /usr/local/app/
 # update os and install vim
 RUN apt update -y && apt install -y vim
 
-# Install all the dependencies
-RUN npm install --legacy-peer-deps
+# Install all the dependencies #don't install just yet...wait for container to run to keep container small
+# RUN npm install --legacy-peer-deps
 
 EXPOSE 4200
 
-CMD npm start
+#CMD npm start
