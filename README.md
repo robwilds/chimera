@@ -20,7 +20,9 @@ you can also edit the config.json file within the root ADP folder (where adp.py 
 
 ## Running the customization
 
-Once everything is setup and running, you can go to http://<URL>:4200 to see the customization.  be sure to click on the logout button to see the login page and login with demo/demo.
+Once everything is setup and running: First thing is to access the chimera container and edit the proxy.conf.js file in the usr/local/app directory.  Edit the URL for your alfresco instance in the /alfresco and /activit-app sections.  NOW RESTART THE CHIMERA CONTAINER.
+
+Now, you can go to http://<URL>:4200 to see the customization.  be sure to click on the logout button to see the login page and login with demo/demo or the appropriate credentials.
 
 after logging in please wait a few moments to see any aws processed images to show up on the home page
 
