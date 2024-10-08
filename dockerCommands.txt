@@ -9,16 +9,5 @@ docker buildx build \
 docker push wildsdocker/chimera:v1
 
 
-docker pull wildsdocker/chimera:v1
-
-docker run -d -p 4200:4200 \
---name chimera \
-wildsdocker/chimera:v1
-
-
-docker pull wildsdocker/queryalfapi:v1
-
-docker run -d -it -p 9600:9600 \
---name queryAlfAPI \
-wildsdocker/queryalfapi:v1
+docker compose up -d
 

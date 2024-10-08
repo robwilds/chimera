@@ -91,14 +91,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     window.location.hostname +
     ":9600/getrekognitionfiles";
 
-  // Http Options
-  httpOptions = {
-    headers: new HttpHeaders({
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    }),
-  };
-
   //recalculating upon browser window resize
   @HostListener("window:resize", ["$event"])
   onResize(event) {
@@ -111,8 +103,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   queryWebService() {
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json; charset=UTF-8",
+    });
+
     this.http
-      .get<rekogData>(this.webserviceURL, this.httpOptions)
+      .get<rekogData>(this.webserviceURL, { headers })
       .subscribe((data) => {
         //get current length of rkdata.  if different than what's pulled
         //from the web service call then set the data to rkdata which

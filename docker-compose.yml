@@ -5,6 +5,10 @@ services:
     image: wildsdocker/chimera:v1
     ports:
       - 4200:4200
+    environment:
+      protocol: "http"
+      hostname: "clive-aws-booth.sales-demohyland.com"
+      port: 80
     volumes:
       - ${PWD}/data:/usr/local/app/static
       - ${PWD}/data/swagger.json:/usr/local/app/static/swagger.json
@@ -15,7 +19,7 @@ services:
     ports:
       - 9600:9600
     environment:
-      BASE_URL: "http://content:8080"
+      BASE_URL: "http://clive-aws-booth.sales-demohyland.com"
       API_URL: "/static/swagger.json"
       user: "demo"
       pass: "demo"
@@ -28,6 +32,3 @@ services:
       elasticpassword: "hylandforce1"
       baseFilePlanID: ""
       baseFilePlanQuery: '{"query": {"query": "select * from rma:filePlan","language": "cmis"}}'
-    links:
-      - alfresco
-      - content
