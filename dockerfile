@@ -13,7 +13,7 @@ COPY ./ /usr/local/app/
 RUN apt update -y && apt install -y vim
 
 # Install all the dependencies #don't install just yet...wait for container to run to keep container small
-# RUN npm install --legacy-peer-deps
+#RUN npm install --legacy-peer-deps
 
 EXPOSE 4200
 
