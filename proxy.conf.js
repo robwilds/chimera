@@ -6,7 +6,7 @@ module.exports = {
     "changeOrigin": true
   },
   "/activiti-app": {
-    "target": "http://localhost:8080",
+    "target": "http://localhost:8094",
     "secure": false,
     "changeOrigin": true
   }
